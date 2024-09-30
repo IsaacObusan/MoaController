@@ -53,33 +53,41 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/firstContraints"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/firstLinear"
-        android:id="@+id/firstContraints"
+        android:layout_marginTop="2dp"
+        android:background="@color/transparent"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/label_slow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:text="SLOW"
+            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/seekBar"
             tools:ignore="NotSibling" />
 
         <!-- SeekBar Container with background labels -->
+
+        <!-- Label for FAST -->
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="100dp"
-            app:layout_constraintStart_toEndOf="@id/label_slow"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/label_fast"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/label_slow"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintVertical_bias="0.0">
 
             <!-- SeekBar for speed -->
 
@@ -91,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:max="3"
+                android:layout_margin="10dp"
                 android:progress="0"
                 android:progressDrawable="@drawable/custom_progress"
                 android:progressTint="#2196F3"
@@ -100,31 +109,32 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp" />
 
+            <!-- Label 2 -->
             <TextView
                 android:id="@+id/label_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:text="1"
-                android:textSize="14sp"
                 android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/seekBar"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/seekBar"
-                android:layout_marginStart="16dp" />
+                app:layout_constraintVertical_bias="0.523" />
 
-            <!-- Label 2 -->
             <TextView
                 android:id="@+id/label_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
-                android:textSize="14sp"
                 android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/seekBar"
-                app:layout_constraintTop_toTopOf="@id/seekBar"
-                app:layout_constraintHorizontal_bias="0.33" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.33"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/seekBar" />
 
             <!-- Label 3 -->
             <TextView
@@ -132,53 +142,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"
-                android:textSize="14sp"
                 android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/seekBar"
-                app:layout_constraintTop_toTopOf="@id/seekBar"
-                app:layout_constraintHorizontal_bias="0.66" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.66"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/seekBar" />
 
             <!-- Label 4 -->
             <TextView
                 android:id="@+id/label_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
                 android:text="4"
-                android:textSize="14sp"
                 android:textColor="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/seekBar"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/seekBar"
-                android:layout_marginEnd="16dp" />
+                app:layout_constraintVertical_bias="0.523" />
 
             <ImageView
                 android:id="@+id/floatingThumb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginStart="8dp"
                 android:contentDescription="Floating thumb"
-                android:src="@drawable/custom_thumb"
 
+                android:src="@drawable/custom_thumb"
                 android:translationY="-10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/label_1"
-                app:layout_constraintVertical_bias="0.172" />
+                app:layout_constraintVertical_bias="0.384" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Label for FAST -->
         <TextView
             android:id="@+id/label_fast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="FAST"
-            android:textSize="16sp"
             android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/seekBar"
             tools:ignore="NotSibling" />
 
         <!-- Speed value text (optional) -->
@@ -186,13 +198,14 @@
             android:id="@+id/speed_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SPEED"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/seekBar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center"
+            android:text="SPEED"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seekBar"
             tools:ignore="NotSibling" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
