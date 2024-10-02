@@ -98,6 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/main_background"
         tools:ignore="MissingConstraints">
 
         <!-- Sidebar content -->
@@ -105,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+
             android:padding="16dp">
 
             <!-- Humidity Toggle -->
@@ -126,8 +128,8 @@
                     android:layout_weight="1"
                     android:paddingStart="16dp"
                     android:text="Humidity"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_humidity"
@@ -135,8 +137,118 @@
                     android:layout_height="wrap_content"
                     android:textOff="OFF"
                     android:textOn="ON"
+                    android:textColor="@color/white"
+                    app:showText="true"
+                    app:thumbTextPadding="2dp"
+                    app:switchTextAppearance="@style/SwitchTextStyle"
                     android:track="@drawable/switch_track" />
             </LinearLayout>
+
+
+         <!--   Voltage Detection-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_humidity_24"
+                    android:contentDescription="@string/voltage_detection" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:text="@string/voltage_detection"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_voltage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="OFF"
+                    android:textOn="ON"
+                    android:textColor="@color/white"
+                    app:showText="true"
+                    app:thumbTextPadding="2dp"
+                    app:switchTextAppearance="@style/SwitchTextStyle"
+                    android:track="@drawable/switch_track" />
+            </LinearLayout>
+
+            <!--Daylight Cycle-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_humidity_24"
+                    android:contentDescription="@string/daylight" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:text="@string/daylight"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_Daylight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="OFF"
+                    android:textOn="ON"
+                    android:textColor="@color/white"
+                    app:showText="true"
+                    app:thumbTextPadding="2dp"
+                    app:switchTextAppearance="@style/SwitchTextStyle"
+                    android:track="@drawable/switch_track" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_humidity_24"
+                    android:contentDescription="@string/audience" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:text="@string/audience"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_Audience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="OFF"
+                    android:textOn="ON"
+                    android:textColor="@color/white"
+                    app:showText="true"
+                    app:thumbTextPadding="2dp"
+                    app:switchTextAppearance="@style/SwitchTextStyle"
+                    android:track="@drawable/switch_track" />
+            </LinearLayout>
+
 
         </LinearLayout>
 

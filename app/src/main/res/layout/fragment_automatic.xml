@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#423E3D"> <!-- Dark background -->
+    android:background="@color/main_background"
+ > <!-- Dark background -->
 
     <!-- Sidebar and Toggle -->
     <LinearLayout
@@ -23,7 +24,7 @@
             android:textOff="OFF LIGHTS"
             android:textOn="ON LIGHTS"
             app:showText="true"
-            android:drawableEnd="@drawable/light_icon"
+            android:drawableStart="@drawable/light_icon"
             app:thumbTextPadding="10dp"
             android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track"
@@ -38,6 +39,8 @@
             android:text="Press Hold"
             android:background="@drawable/voice"
             android:textColor="@android:color/white" />
+
+
     </LinearLayout>
 
     <!-- Main Content -->
@@ -64,7 +67,7 @@
             android:layout_below="@id/img_ferris_wheel"
             android:layout_centerHorizontal="true" />
 
-        <!-- Speed Gauge (SeekBar) -->
+        <!-- Speed Gauge (SeekBar) show here the turning speed-->
         <SeekBar
             android:id="@+id/sb_speed"
             android:layout_width="300dp"
@@ -83,6 +86,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="50dp"
             android:layout_centerVertical="true"
+            app:switchTextAppearance="@style/SwitchTextStyle"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </RelativeLayout>
 </FrameLayout>

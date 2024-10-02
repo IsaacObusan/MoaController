@@ -6,4 +6,7 @@
     <string name="humidity">Humidity</string>
     <string name="open_sidebar">Open Sidebar</string>
     <string name="starter">Starter</string>
+    <string name="voltage_detection">Voltage Detection</string>
+    <string name="daylight">Daylight Cycle</string>
+    <string name="audience">Audience Detection</string>
 </resources>
