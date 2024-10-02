@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Header_indicator">You/re in Manual Mode!</string>
+    <string name="humidity">Humidity</string>
+    <string name="open_sidebar">Open Sidebar</string>
+    <string name="starter">Starter</string>
 </resources>

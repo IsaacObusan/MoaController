@@ -21,21 +21,21 @@ public class Manual extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_manual, container, false);
 
-        // Initialize SeekBar and ImageView
+
         seekBar = view.findViewById(R.id.seekBar);
         thumbImage = view.findViewById(R.id.floatingThumb);
 
-        // Set SeekBar listener to update thumb position
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // Update the position of the floating thumb
                 int width = seekBar.getWidth();
-                float thumbOffset = (width / (float) seekBar.getMax()) * progress; // Calculate offset based on progress
-                thumbImage.setTranslationX(thumbOffset - (thumbImage.getWidth() / 2)); // Center the thumb
+                float thumbOffset = (width / (float) seekBar.getMax()) * progress;
+                thumbImage.setTranslationX(thumbOffset - (thumbImage.getWidth() / 2));
             }
 
             @Override

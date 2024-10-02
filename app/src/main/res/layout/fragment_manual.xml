@@ -102,7 +102,7 @@
                 android:layout_margin="10dp"
                 android:progress="0"
                 android:progressDrawable="@drawable/custom_progress"
-                android:progressTint="#2196F3"
+                android:progressTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.28"
