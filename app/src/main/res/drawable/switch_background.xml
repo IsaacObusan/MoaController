@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background gradient from dark to light -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#2C2C2C"
+            android:endColor="#F5F5F5"
+            android:angle="270" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- Switch handle (circle) -->
+    <item android:top="40dp" android:bottom="40dp" android:left="20dp" android:right="20dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" /> <!-- White handle -->
+            <stroke android:width="2dp" android:color="#A1A1A1" /> <!-- Border -->
+        </shape>
+    </item>
+
+</layer-list>

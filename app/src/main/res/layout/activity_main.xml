@@ -58,22 +58,18 @@
         <!-- Switch in the main content (Manual/Automatic) -->
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/Switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="131dp"
+            android:layout_height="23dp"
+            android:textColor="@color/white"
             android:textOff="Manual"
             android:textOn="Automatic"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
+            android:textSize="10sp"
+            android:thumb="@drawable/switch_thumb"
             app:layout_constraintTop_toBottomOf="@+id/header"
             app:showText="true"
-            android:thumb="@drawable/switch_thumb"
-            app:track="@drawable/switch_track"
             app:switchTextAppearance="@style/SwitchTextStyle"
             app:thumbTextPadding="10dp"
+            app:track="@drawable/switch_track"
             tools:ignore="MissingConstraints" />
 
         <!-- ViewPager for switching between fragments -->
@@ -82,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/Switch"
-            tools:ignore="MissingConstraints" >
+            tools:ignore="MissingConstraints">
 
             <FrameLayout
                 android:id="@+id/content_frame"
@@ -91,6 +87,7 @@
         </androidx.viewpager.widget.ViewPager>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <!-- Sidebar (NavigationView) -->
     <com.google.android.material.navigation.NavigationView

@@ -13,7 +13,7 @@
     <item android:state_checked="false">
         <shape android:shape="rectangle">
             <solid  android:color="#ffffff"/>
-            <size android:width="50dp" android:height="40dp"/>
+            <size android:width="40dp" android:height="20dp"/>
             <stroke android:width="2dp"
                 android:color="@color/main_background"/>
             <corners android:radius="40dp"/>

@@ -20,7 +20,7 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_lights"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:textOff="OFF LIGHTS"
             android:textOn="ON LIGHTS"
             app:showText="true"
@@ -31,14 +31,28 @@
             app:switchTextAppearance="@style/SwitchTextStyle"
             />
 
-        <!-- Voice Command Button -->
-        <Button
-            android:id="@+id/btn_voice_command"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="Press Hold"
-            android:background="@drawable/voice"
-            android:textColor="@android:color/white" />
+
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/dual_circle">
+
+            <Button
+                android:id="@+id/btn_voice_command"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20sp"
+                android:background="@drawable/voice"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Voice Command"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
@@ -46,7 +60,7 @@
     <!-- Main Content -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"> <!-- To make room for sidebar -->
 
 
@@ -67,26 +81,126 @@
             android:layout_below="@id/img_ferris_wheel"
             android:layout_centerHorizontal="true" />
 
-        <!-- Speed Gauge (SeekBar) show here the turning speed-->
-        <SeekBar
-            android:id="@+id/sb_speed"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:max="4"
-            android:progress="1"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="150dp" />
 
-        <!-- On/Off Starter Switch -->
-        <Switch
-            android:id="@+id/switch_starter"
+
+
+        <!-- res/layout/activity_main.xml -->
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="220dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="37dp"
+            android:background="#555555"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ON"
+                android:textColor="#FFFFFF" />
+
+            <SeekBar
+                android:id="@+id/verticalSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:progressDrawable="@drawable/switch_background"
+            android:rotation="270"
+            android:thumb="@drawable/switch_thumb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OFF"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="-390dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/bottom_dual_circle"
+
+        >
+
+        <!-- Number 1 -->
+        <TextView
+            android:id="@+id/number_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/starter"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="50dp"
-            android:layout_centerVertical="true"
-            app:switchTextAppearance="@style/SwitchTextStyle"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
-    </RelativeLayout>
+            android:layout_gravity="start"
+            android:padding="10dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="30dp"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="25dp" />
+
+        <!-- Number 2 -->
+        <TextView
+            android:id="@+id/number_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:layout_gravity="start"
+            android:layout_marginStart="80dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:padding="10dp" />
+
+        <!-- Number 3 -->
+        <TextView
+            android:id="@+id/number_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:layout_gravity="end"
+            android:textSize="24sp"
+            android:layout_marginEnd="80dp"
+            android:textColor="@color/white"
+            android:padding="10dp" />
+
+        <!-- Number 4 -->
+        <TextView
+            android:id="@+id/number_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:layout_gravity="end"
+            android:layout_marginTop="100dp"
+
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/needle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/needle"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:scaleType="centerInside" />
+
+    </FrameLayout>
+
+
+
+
 </FrameLayout>
