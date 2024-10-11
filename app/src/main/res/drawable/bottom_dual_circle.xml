@@ -4,8 +4,8 @@
         <shape android:shape="oval">
             <solid android:color="#3b302c"/> <!-- Dark outer circle -->
             <size
-                android:width="200dp"
-                android:height="200dp" />
+                android:width="150dp"
+                android:height="150dp" />
         </shape>
     </item>
 
@@ -15,11 +15,11 @@
             <solid android:color="#808080"/> <!-- Darker inner circle -->
             <gradient
                 android:startColor="#CC7722"
-            android:endColor="#8A9A5B"
+            android:endColor="#8A915B"
             android:angle="0"/>
             <size
-                android:width="150dp"
-                android:height="150dp" />
+                android:width="120dp"
+                android:height="120dp" />
             <padding
                 android:left="135dp"
                 android:top="25dp"
@@ -32,8 +32,8 @@
         <shape android:shape="oval">
             <solid android:color="#bdbdbd"/> <!-- Darker inner circle -->
             <size
-                android:width="120sp"
-                android:height="120sp" />
+                android:width="90sp"
+                android:height="90sp" />
 
         </shape>
     </item>

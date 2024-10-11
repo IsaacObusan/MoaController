@@ -21,6 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+
             android:layout_weight="1"
             android:gravity="right"
             android:orientation="vertical">
@@ -28,7 +29,16 @@
             <ImageView
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
+                android:id="@+id/light"
                 android:src="@drawable/light" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/light_text_indicator"
+                android:textColor="@color/white"
+                android:text="@string/on_lights"
+
+                />
 
 
         </LinearLayout>
@@ -44,6 +54,7 @@
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:id="@+id/rotate"
                 android:src="@drawable/rotation" />
 
         </LinearLayout>
@@ -87,7 +98,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/label_slow"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="1.0">
 
             <!-- SeekBar for speed -->
 
@@ -98,8 +109,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:max="3"
                 android:layout_margin="10dp"
+                android:max="3"
                 android:progress="0"
                 android:progressDrawable="@drawable/custom_progress"
                 android:progressTint="@color/blue"
@@ -193,20 +204,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="NotSibling" />
 
-        <!-- Speed value text (optional) -->
-        <TextView
-            android:id="@+id/speed_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="SPEED"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/seekBar"
-            tools:ignore="NotSibling" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -217,10 +215,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="259dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="262dp"
-        android:layout_marginBottom="126dp"
+        android:layout_marginStart="254dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="267dp"
+        android:layout_marginBottom="90dp"
         android:src="@drawable/speedimage" />
 
 

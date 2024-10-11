@@ -9,4 +9,16 @@
     <string name="voltage_detection">Voltage Detection</string>
     <string name="daylight">Daylight Cycle</string>
     <string name="audience">Audience Detection</string>
+    <string name="voice_command">Voice Command</string>
+    <string name="off_lights">OFF LIGHTS</string>
+    <string name="on_lights">ON LIGHTS</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="automatic_mode">You/re in Automatic Mode</string>
+    <string name="manual_mode">You/re in Manual Mode</string>
+
 </resources>
