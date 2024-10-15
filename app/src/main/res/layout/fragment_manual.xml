@@ -24,13 +24,14 @@
 
             android:layout_weight="1"
             android:gravity="right"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
 
-            <ImageView
+            <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:id="@+id/light"
-                android:src="@drawable/light" />
+                app:lottie_rawRes="@raw/bulb_animation"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,12 +51,12 @@
             android:gravity="left"
             android:orientation="vertical">
 
-            <ImageView
+            <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:id="@+id/rotate"
-                android:src="@drawable/rotation" />
+                app:lottie_rawRes="@raw/rotation_animation"/>
 
         </LinearLayout>
 

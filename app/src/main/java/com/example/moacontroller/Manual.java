@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 
 public class Manual extends Fragment {
 
@@ -26,8 +28,10 @@ public class Manual extends Fragment {
     private DatabaseReference databaseReference;
     private boolean isLightOn = false;  // Track light state
     private boolean isRotateOn = false; // Track rotate state
+    private LottieAnimationView lightAnimationView; // Lottie animation view for light
+    private LottieAnimationView rotateAnimationView; // Lottie animation view for rotation
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "CutPasteId"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,8 +43,12 @@ public class Manual extends Fragment {
 
         seekBar = view.findViewById(R.id.seekBar);
         thumbImage = view.findViewById(R.id.floatingThumb);
-        lights_button = view.findViewById(R.id.light);
-        rotate_button = view.findViewById(R.id.rotate);
+        lights_button = view.findViewById(R.id.light); // Ensure this is the button for toggling light
+        rotate_button = view.findViewById(R.id.rotate); // Button for toggling rotate
+        lightAnimationView = view.findViewById(R.id.light); // Lottie animation view for light
+        rotateAnimationView = view.findViewById(R.id.rotate); // Assuming you have a separate Lottie view for rotation
+
+
 
         // Load initial SeekBar value from Firebase
         loadInitialSeekBarValue();
@@ -73,6 +81,20 @@ public class Manual extends Fragment {
             isLightOn = !isLightOn;
             String message = "Light is " + (isLightOn ? "ON" : "OFF");
             Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+            // Play the animation
+            if (isLightOn) {
+                lightAnimationView.setVisibility(View.VISIBLE);
+                lightAnimationView.setRepeatCount(LottieDrawable.INFINITE);
+                lightAnimationView.playAnimation();
+
+                // Restart animation on end
+
+            } else {
+                lightAnimationView.cancelAnimation();
+                lightAnimationView.setVisibility(View.VISIBLE);
+            }
+
             // Store light state in Firebase
             databaseReference.child("light").setValue(isLightOn);
         });
@@ -82,6 +104,18 @@ public class Manual extends Fragment {
             isRotateOn = !isRotateOn;
             String message = "Rotate is " + (isRotateOn ? "ON" : "OFF");
             Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+            // Play the rotation animation
+            if (isRotateOn) {
+                rotateAnimationView.setVisibility(View.VISIBLE);
+                rotateAnimationView.setRepeatCount(LottieDrawable.INFINITE);
+                rotateAnimationView.playAnimation();
+
+            } else {
+                rotateAnimationView.cancelAnimation(); // Stop the animation
+                rotateAnimationView.setVisibility(View.VISIBLE);// Hide it when off
+            }
+
             // Store rotate state in Firebase
             databaseReference.child("rotate").setValue(isRotateOn);
         });

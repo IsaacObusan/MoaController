@@ -42,4 +42,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    val lottieVersion = "6.4.0"
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 }
