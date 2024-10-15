@@ -116,7 +116,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_humidity_24"
+                    android:src="@drawable/baseline_air_24"
                     android:contentDescription="Humidity" />
 
                 <TextView
@@ -152,7 +152,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_humidity_24"
+                    android:src="@drawable/voltage_icon"
                     android:contentDescription="@string/voltage_detection" />
 
                 <TextView
@@ -187,7 +187,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_humidity_24"
+                    android:src="@drawable/daylight_icon"
                     android:contentDescription="@string/daylight" />
 
                 <TextView
@@ -221,7 +221,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_humidity_24"
+                    android:src="@drawable/audience_icon"
                     android:contentDescription="@string/audience" />
 
                 <TextView
