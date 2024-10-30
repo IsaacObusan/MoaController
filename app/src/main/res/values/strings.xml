@@ -20,5 +20,6 @@
     <string name="_4">4</string>
     <string name="automatic_mode">You/re in Automatic Mode</string>
     <string name="manual_mode">You/re in Manual Mode</string>
+    <string name="todo">TODO</string>
 
 </resources>

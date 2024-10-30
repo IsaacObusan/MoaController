@@ -1,6 +1,8 @@
 package com.example.moacontroller;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,6 +41,9 @@ public class Automatic extends Fragment {
 
     private DatabaseReference databaseReference; // Firebase database reference
 
+    private LottieAnimationView ferrisWheelAnimation;
+    private TextView centerNumber;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +53,8 @@ public class Automatic extends Fragment {
         voiceCommandButton = view.findViewById(R.id.btn_voice_command);
         switchLights = view.findViewById(R.id.switch_lights); // Initialize the SwitchCompat
         verticalSeekBar = view.findViewById(R.id.verticalSeekBar); // Initialize SeekBar
+        ferrisWheelAnimation = view.findViewById(R.id.img_ferris_wheel);
+        centerNumber = view.findViewById(R.id.center_number);
 
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("control");
@@ -94,12 +104,22 @@ public class Automatic extends Fragment {
     }
 
     private void setupSeekBarListener() {
-        verticalSeekBar.setMax(1); // Set max to 1 for start/stop functionality
+        verticalSeekBar.setMax(1);
         verticalSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 databaseReference.child("rotate").setValue(progress == 1); // Update the rotate value in Firebase
-                Toast.makeText(getContext(), progress == 1 ? "Start" : "Stop", Toast.LENGTH_SHORT).show();
+
+                if (progress == 1) {
+                    ferrisWheelAnimation.setVisibility(View.VISIBLE); // Show the animation
+                    ferrisWheelAnimation.setRepeatCount(ValueAnimator.INFINITE); // Set to loop infinitely
+                    ferrisWheelAnimation.playAnimation(); // Start the animation
+                    Toast.makeText(getContext(), "Start", Toast.LENGTH_SHORT).show();
+                } else {
+                    ferrisWheelAnimation.cancelAnimation(); // Stop the animation
+                    ferrisWheelAnimation.setVisibility(View.VISIBLE); // Hide the animation
+                    Toast.makeText(getContext(), "Stop", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -114,6 +134,8 @@ public class Automatic extends Fragment {
         });
     }
 
+
+
     private void fetchInitialValues() {
         // Fetch the initial state for both the light and rotate
         databaseReference.child("light").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -123,13 +145,21 @@ public class Automatic extends Fragment {
                 if (isLightOn != null) {
                     switchLights.setChecked(isLightOn); // Set Switch based on light state
                 }
+
+
+
+
             }
+
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getContext(), "Failed to load initial light state.", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         databaseReference.child("rotate").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -177,6 +207,23 @@ public class Automatic extends Fragment {
             }
         });
 
+        databaseReference.child("speeDometer").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Float speed = dataSnapshot.getValue(Float.class);
+                if (speed != null) {
+                    rotateNeedle(speed); // Set the needle based on speed value
+                    updateCenterNumber(speed); // Update the center number
+                    Toast.makeText(getContext(), "Speed: " + speed, Toast.LENGTH_SHORT).show(); // Show toast with speed
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Failed to load speed value.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // Set up listener for real-time updates on speed
         databaseReference.child("speeDometer").addValueEventListener(new ValueEventListener() {
             @Override
@@ -184,6 +231,7 @@ public class Automatic extends Fragment {
                 Float speed = dataSnapshot.getValue(Float.class);
                 if (speed != null) {
                     rotateNeedle(speed); // Update needle based on speed value
+                    updateCenterNumber(speed);
                 }
             }
             @Override
@@ -193,6 +241,10 @@ public class Automatic extends Fragment {
         });
     }
 
+            private void updateCenterNumber(float speed) {
+                centerNumber.setText(String.valueOf((int) speed)); // Update the center TextView with speed
+            }
+
     private void rotateNeedle(float speed) {
         float rotationAngle = getRotationAngleForSpeed(speed);
         needle.setRotation(rotationAngle);
@@ -200,10 +252,10 @@ public class Automatic extends Fragment {
 
     private float getRotationAngleForSpeed(float speed) {
         switch ((int) speed) {
-            case 1: return -5f;
-            case 2: return 23f;
-            case 3: return 122f;
-            case 4: return 150f;
+            case 1: return 7f;
+            case 2: return 35f;
+            case 3: return 134f;
+            case 4: return 140f;
             default: return 0f;
         }
     }
@@ -273,22 +325,49 @@ public class Automatic extends Fragment {
             String[] parts = command.split(" ");
             if (parts.length > 4) {
                 String speedLevelStr = parts[4];
+                int speedLevel = 0;
                 try {
-                    int speedLevel = Integer.parseInt(speedLevelStr);
-                    if (speedLevel >= 1 && speedLevel <= 4) {
-                        databaseReference.child("speeDometer").setValue((float) speedLevel);
-                        Toast.makeText(getContext(), "Speed set to level " + speedLevel, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getContext(), "Speed level must be between 1 and 4", Toast.LENGTH_SHORT).show();
+                    // Check if the input is a number
+                    speedLevel = Integer.parseInt(speedLevelStr);
+                    if (speedLevel < 1 || speedLevel > 4) {
+                        throw new NumberFormatException();
                     }
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Invalid speed level. Please say a number between 1 and 4.", Toast.LENGTH_SHORT).show();
+                    // If not a number, check for words
+                    switch (speedLevelStr) {
+                        case "one":
+                            speedLevel = 1;
+                            break;
+                        case "two":
+                            speedLevel = 2;
+                            break;
+                        case "three":
+                            speedLevel = 3;
+                            break;
+                        case "four":
+                            speedLevel = 4;
+                            break;
+                        default:
+                            Toast.makeText(getContext(), "Invalid speed level. Please say 'one', 'two', 'three', or 'four', or use numbers 1-4.", Toast.LENGTH_SHORT).show();
+                            return;
+                    }
                 }
+
+                databaseReference.child("speeDometer").setValue((float) speedLevel);
+                Toast.makeText(getContext(), "Speed set to level " + (speedLevelStr.equals("one") ? "one" : speedLevelStr), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getContext(), "Please specify a speed level between 1 and 4.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Please specify a speed level: 'one', 'two', 'three', or 'four', or use numbers 1-4.", Toast.LENGTH_SHORT).show();
             }
+        } else if (command.contains("i'm done please close the app")) {
+            // Close the app
+            Toast.makeText(getContext(), "Closing the app...", Toast.LENGTH_SHORT).show();
+            // Assuming you're in an Activity context
+            ((Activity) getContext()).finish();
         } else {
             Toast.makeText(getContext(), "Command not recognized", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
 }
