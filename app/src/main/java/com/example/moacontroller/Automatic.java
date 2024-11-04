@@ -145,14 +145,7 @@ public class Automatic extends Fragment {
                 if (isLightOn != null) {
                     switchLights.setChecked(isLightOn); // Set Switch based on light state
                 }
-
-
-
-
             }
-
-
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -254,8 +247,8 @@ public class Automatic extends Fragment {
         switch ((int) speed) {
             case 1: return 7f;
             case 2: return 35f;
-            case 3: return 134f;
-            case 4: return 140f;
+            case 3: return 111f;
+            case 4: return 139f;
             default: return 0f;
         }
     }
